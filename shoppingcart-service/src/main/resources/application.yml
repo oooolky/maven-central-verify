@@ -1,0 +1,14 @@
+server:
+  port: 8080
+
+spring:
+  rabbitmq:
+    publisher-confirm-type: correlated
+    publisher-returns: true
+
+cca:
+  base-url: ${CCA_BASE_URL:http://localhost:8082}
+ship:
+  queue: ${SHIP_QUEUE:ship-order}
+rmq:
+  confirm-timeout-ms: ${RMQ_CONFIRM_TIMEOUT_MS:5000}

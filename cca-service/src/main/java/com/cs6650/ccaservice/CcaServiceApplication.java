@@ -5,9 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class CcaServiceApplication {
-
   public static void main(String[] args) {
     SpringApplication.run(CcaServiceApplication.class, args);
   }
-
 }

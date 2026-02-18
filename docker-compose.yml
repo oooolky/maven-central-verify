@@ -1,0 +1,46 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin123
+
+  cca:
+    build: ./cca-service
+    container_name: cca
+    ports:
+      - "8082:8080"
+
+  shoppingcart:
+    build: ./shoppingcart-service
+    container_name: shoppingcart
+    ports:
+      - "8081:8080"
+    environment:
+      CCA_BASE_URL: http://cca:8080
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_RABBITMQ_PORT: 5672
+      SPRING_RABBITMQ_USERNAME: admin
+      SPRING_RABBITMQ_PASSWORD: admin123
+      SHIP_QUEUE: ship-order
+      RMQ_CONFIRM_TIMEOUT_MS: 5000
+    depends_on:
+      - rabbitmq
+      - cca
+
+  warehouse:
+    build: ./warehouse-consumer
+    container_name: warehouse
+    environment:
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_RABBITMQ_PORT: 5672
+      SPRING_RABBITMQ_USERNAME: admin
+      SPRING_RABBITMQ_PASSWORD: admin123
+      SHIP_QUEUE: ship-order
+      CONSUMER_CONCURRENCY: 8
+    depends_on:
+      - rabbitmq

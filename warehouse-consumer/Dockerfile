@@ -1,4 +1,4 @@
-FROM ubuntu:latest
-LABEL authors="lukaiyuan"
-
-ENTRYPOINT ["top", "-b"]
+FROM eclipse-temurin:21-jre
+WORKDIR /app
+COPY build/libs/*.jar app.jar
+ENTRYPOINT ["java","-jar","/app/app.jar"]
