@@ -5,25 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bee69e24-a577-48a5-a711-a012df9677fa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/cca-service/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cca-service/src/main/java/com/cs6650/ccaservice/CcaController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shoppingcart-service/src/main/java/com/cs6650/shoppingcartservice/CheckoutController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shoppingcart-service/src/main/java/com/cs6650/shoppingcartservice/RmqConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shoppingcart-service/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/warehouse-consumer/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/warehouse-consumer/src/main/java/com/cs6650/warehouseconsumer/WarehouseListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/warehouse-consumer/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cca-service/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/cca-service/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cca-service/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/cca-service/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cca-service/src/main/java/com/cs6650/ccaservice/CcaServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/cca-service/src/main/java/com/cs6650/ccaservice/CcaServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoppingcart-service/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingcart-service/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shoppingcart-service/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingcart-service/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoppingcart-service/src/main/java/com/cs6650/shoppingcartservice/CheckoutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingcart-service/src/main/java/com/cs6650/shoppingcartservice/CheckoutController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoppingcart-service/src/main/java/com/cs6650/shoppingcartservice/RmqConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingcart-service/src/main/java/com/cs6650/shoppingcartservice/RmqConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shoppingcart-service/src/main/java/com/cs6650/shoppingcartservice/ShoppingcartServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingcart-service/src/main/java/com/cs6650/shoppingcartservice/ShoppingcartServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/warehouse-consumer/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/warehouse-consumer/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/warehouse-consumer/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/warehouse-consumer/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/warehouse-consumer/src/main/java/com/cs6650/warehouseconsumer/WarehouseConsumerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/warehouse-consumer/src/main/java/com/cs6650/warehouseconsumer/WarehouseConsumerApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoppingcart-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingcart-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/warehouse-consumer/src/main/java/com/cs6650/warehouseconsumer/WarehouseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/warehouse-consumer/src/main/java/com/cs6650/warehouseconsumer/WarehouseListener.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +75,7 @@
       <workItem from="1771359020784" duration="1000" />
       <workItem from="1771409707217" duration="29000" />
       <workItem from="1771410405569" duration="173000" />
-      <workItem from="1771438619993" duration="12177000" />
+      <workItem from="1771438619993" duration="17636000" />
     </task>
     <servers />
   </component>

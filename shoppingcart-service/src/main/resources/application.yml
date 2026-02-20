@@ -1,14 +1,17 @@
 server:
-  port: 8080
+  port: 8081
+
+cca:
+  base-url: http://localhost:8080
+
+ship:
+  queue: ship-order
 
 spring:
   rabbitmq:
+    host: localhost
+    port: 5672
+    username: admin
+    password: admin123
     publisher-confirm-type: correlated
     publisher-returns: true
-
-cca:
-  base-url: ${CCA_BASE_URL:http://localhost:8082}
-ship:
-  queue: ${SHIP_QUEUE:ship-order}
-rmq:
-  confirm-timeout-ms: ${RMQ_CONFIRM_TIMEOUT_MS:5000}

@@ -34,9 +34,7 @@ public class WarehouseListener {
     try {
       totalOrders.increment();
       System.out.println("Received: " + body);
-
       // (optional) if later you send JSON, you can parse it and update qtyByProduct here
-
       channel.basicAck(tag, false);
     } catch (Exception e) {
       channel.basicNack(tag, false, true);
