@@ -37,21 +37,21 @@ resource "aws_cloudwatch_log_group" "product_service_good" {
 }
 
 resource "aws_cloudwatch_log_group" "product_service_bad" {
-  name              = "/ecs/${var.project_name}/product_service_bad"
+  name              = "/ecs/${var.project_name}/product-service-bad"
   retention_in_days = var.log_retention_days
 
   tags = { Project = var.project_name }
 }
 
 resource "aws_cloudwatch_log_group" "shopping_cart_service" {
-  name              = "/ecs/${var.project_name}/shopping_cart_service"
+  name              = "/ecs/${var.project_name}/shopping-cart-service"
   retention_in_days = var.log_retention_days
 
   tags = { Project = var.project_name }
 }
 
 resource "aws_cloudwatch_log_group" "credit_card_service" {
-  name              = "/ecs/${var.project_name}/credit_card_service"
+  name              = "/ecs/${var.project_name}/credit-card-service"
   retention_in_days = var.log_retention_days
 
   tags = { Project = var.project_name }
@@ -65,7 +65,7 @@ resource "aws_cloudwatch_log_group" "rabbitmq" {
 }
 
 resource "aws_cloudwatch_log_group" "warehouse_consumer" {
-  name              = "/ecs/${var.project_name}/warehouse_consumer"
+  name              = "/ecs/${var.project_name}/warehouse-consumer"
   retention_in_days = var.log_retention_days
 
   tags = { Project = var.project_name }
