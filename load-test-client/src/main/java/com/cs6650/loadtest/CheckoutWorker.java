@@ -1,7 +1,6 @@
 package com.cs6650.loadtest;
 
 import java.io.IOException;
-import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -19,32 +18,35 @@ public class CheckoutWorker implements Runnable {
     private static final Duration REQUEST_TIMEOUT = Duration.ofSeconds(10);
 
     private final HttpClient client;
-    private final URI checkoutUri;
+    private final String baseUrl;
     private final int maxRetries;
     private final int totalRequests;
     private final AtomicInteger sharedRequestCounter;
     private final AtomicInteger successCounter;
     private final AtomicInteger declinedCounter;
+    private final AtomicInteger clientErrorCounter;
     private final AtomicInteger failureCounter;
     private final CountDownLatch doneSignal;
     private final List<RequestRecord> records = new ArrayList<>();
 
     public CheckoutWorker(HttpClient client,
-                          URI checkoutUri,
+                          String baseUrl,
                           int maxRetries,
                           int totalRequests,
                           AtomicInteger sharedRequestCounter,
                           AtomicInteger successCounter,
                           AtomicInteger declinedCounter,
+                          AtomicInteger clientErrorCounter,
                           AtomicInteger failureCounter,
                           CountDownLatch doneSignal) {
         this.client = client;
-        this.checkoutUri = checkoutUri;
+        this.baseUrl = baseUrl;
         this.maxRetries = maxRetries;
         this.totalRequests = totalRequests;
         this.sharedRequestCounter = sharedRequestCounter;
         this.successCounter = successCounter;
         this.declinedCounter = declinedCounter;
+        this.clientErrorCounter = clientErrorCounter;
         this.failureCounter = failureCounter;
         this.doneSignal = doneSignal;
     }
@@ -67,10 +69,11 @@ public class CheckoutWorker implements Runnable {
     private void executeOneLogicalRequest() {
         long logicalStart = System.currentTimeMillis();
         int finalStatusCode = 0;
+        long shoppingCartId = ThreadLocalRandom.current().nextLong(1, 1_000_001);
 
         for (int attempt = 1; attempt <= maxRetries; attempt++) {
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(checkoutUri)
+                    .uri(buildCheckoutUri(shoppingCartId))
                     .timeout(REQUEST_TIMEOUT)
                     .header("Content-Type", "application/json")
                     .POST(HttpRequest.BodyPublishers.ofString(buildCheckoutBody()))
@@ -95,7 +98,11 @@ public class CheckoutWorker implements Runnable {
                     continue;
                 }
 
-                failureCounter.incrementAndGet();
+                if (finalStatusCode >= 400 && finalStatusCode < 500) {
+                    clientErrorCounter.incrementAndGet();
+                } else {
+                    failureCounter.incrementAndGet();
+                }
                 break;
 
             } catch (InterruptedException e) {
@@ -118,9 +125,12 @@ public class CheckoutWorker implements Runnable {
      * Update this method if teammate endpoint names change
      */
     private String buildCheckoutBody() {
-        long shoppingCartId = ThreadLocalRandom.current().nextLong(1, 1_000_001);
         String creditCard = randomCardNumber();
-        return "{\"shoppingCartId\":" + shoppingCartId + ",\"creditCard\":\"" + creditCard + "\"}";
+        return "{\"credit_card_number\":\"" + creditCard + "\"}";
+    }
+
+    private java.net.URI buildCheckoutUri(long shoppingCartId) {
+        return java.net.URI.create(baseUrl + "/shopping-carts/" + shoppingCartId + "/checkout");
     }
 
     private String randomCardNumber() {

@@ -1,6 +1,5 @@
 package com.cs6650.loadtest;
 
-import java.net.URI;
 import java.net.http.HttpClient;
 import java.time.Duration;
 import java.util.ArrayList;
@@ -18,18 +17,19 @@ public class CheckoutLoadTestClient {
     private static final int MAX_RETRIES = 5;
     private static final String DEFAULT_OUTPUT_CSV = "checkout_results.csv";
 
-    private final URI checkoutUri;
+    private final String baseUrl;
     private final int numThreads;
     private final int totalRequests;
     private final String outputCsv;
     private final AtomicInteger nextRequestIndex = new AtomicInteger(0);
     private final AtomicInteger successCounter = new AtomicInteger(0);
     private final AtomicInteger declinedCounter = new AtomicInteger(0);
+    private final AtomicInteger clientErrorCounter = new AtomicInteger(0);
     private final AtomicInteger failureCounter = new AtomicInteger(0);
     private final List<CheckoutWorker> workers = new ArrayList<>();
 
     public CheckoutLoadTestClient(String baseUrl, int numThreads, int totalRequests, String outputCsv) {
-        this.checkoutUri = URI.create(normalizeBaseUrl(baseUrl) + "/shopping-cart/checkout");
+        this.baseUrl = normalizeBaseUrl(baseUrl);
         this.numThreads = numThreads;
         this.totalRequests = totalRequests;
         this.outputCsv = outputCsv;
@@ -51,12 +51,13 @@ public class CheckoutLoadTestClient {
         for (int i = 0; i < numThreads; i++) {
             CheckoutWorker worker = new CheckoutWorker(
                     client,
-                    checkoutUri,
+                    baseUrl,
                     MAX_RETRIES,
                     totalRequests,
                     nextRequestIndex,
                     successCounter,
                     declinedCounter,
+                    clientErrorCounter,
                     failureCounter,
                     doneSignal
             );
@@ -85,7 +86,7 @@ public class CheckoutLoadTestClient {
         System.out.println("============================================================");
         System.out.println("CS6650 Assignment 3 Checkout Load Test");
         System.out.println("============================================================");
-        System.out.println("Target endpoint: " + checkoutUri);
+        System.out.println("Target endpoint: " + baseUrl + "/shopping-carts/{shoppingCartId}/checkout");
         System.out.println("Total requests:  " + totalRequests);
         System.out.println("Thread count:    " + numThreads);
         System.out.println("CSV output:      " + outputCsv);
@@ -103,9 +104,10 @@ public class CheckoutLoadTestClient {
     private void printSummary(long totalTimeMs, LatencyStats stats) {
         int success = successCounter.get();
         int declined = declinedCounter.get();
+        int clientErrors = clientErrorCounter.get();
         int failed = failureCounter.get();
-        int unsuccessful = declined + failed;
-        int completed = success + unsuccessful;
+        int unsuccessful = clientErrors + failed;
+        int completed = success + declined + clientErrors + failed;
 
         double totalSeconds = totalTimeMs / 1000.0;
         double throughput = completed / totalSeconds;
@@ -114,9 +116,10 @@ public class CheckoutLoadTestClient {
         System.out.println("RESULTS");
         System.out.println("============================================================");
         System.out.println("Successful requests (2xx): " + success);
-        System.out.println("Declined requests (402):   " + declined);
-        System.out.println("Failed requests:           " + failed);
-        System.out.println("Unsuccessful requests:     " + unsuccessful);
+        System.out.println("Declined requests (402):   " + declined + " (business outcome)");
+        System.out.println("Client error requests (4xx excl. 402): " + clientErrors);
+        System.out.println("Failed requests (5xx/exception):       " + failed);
+        System.out.println("Unsuccessful requests:     " + unsuccessful + " (client errors + failed)");
         System.out.println("Completed requests:        " + completed);
         System.out.println("Wall time:                 " + totalTimeMs + " ms (" + String.format("%.2f", totalSeconds) + " s)");
         System.out.println("Throughput:                " + String.format("%.2f", throughput) + " req/s");
@@ -170,4 +173,3 @@ public class CheckoutLoadTestClient {
         client.run();
     }
 }
-
