@@ -4,7 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bee69e24-a577-48a5-a711-a012df9677fa" name="Changes" comment="" />
+    <list default="true" id="bee69e24-a577-48a5-a711-a012df9677fa" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignment02/product-service/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment02/product-service/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bad-product-service/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bad-product-service/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cca-service/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/cca-service/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cca-service/cca-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/cca-service/cca-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cca-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cca-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/load-test-client/results_200k.csv" beforeDir="false" afterPath="$PROJECT_DIR$/load-test-client/results_200k.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoppingcart-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingcart-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoppingcart-service/src/main/java/com/cs6650/shoppingcartservice/CheckoutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingcart-service/src/main/java/com/cs6650/shoppingcartservice/CheckoutController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoppingcart-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingcart-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/warehouse-consumer/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/warehouse-consumer/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/warehouse-consumer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/warehouse-consumer/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/warehouse-consumer/src/main/java/com/cs6650/warehouseconsumer/WarehouseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/warehouse-consumer/src/main/java/com/cs6650/warehouseconsumer/WarehouseListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/warehouse-consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/warehouse-consumer/src/main/resources/application.yml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,10 +39,6 @@
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
 }</component>
-  <component name="McpProjectServerCommands">
-    <commands />
-    <urls />
-  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -39,30 +50,43 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
     "git-widget-placeholder": "devops__infra",
-    "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/yuhaos/Desktop/CS6650/maven-central-verify",
+    "last_opened_file_path": "/Users/lukaiyuan/Desktop/new/Assignment3",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/shoppingcart-service/src/main/java/com/cs6650/standby" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Assignment3" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Assignment3" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.30387.90" />
-        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.30387.90" />
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.25557.131" />
+        <option value="bundled-js-predefined-d6986cc7102b-b598e85cdad2-JavaScript-IU-252.25557.131" />
       </set>
     </attachedChunks>
   </component>
@@ -78,7 +102,10 @@
       <workItem from="1771409707217" duration="29000" />
       <workItem from="1771410405569" duration="173000" />
       <workItem from="1771438619993" duration="17636000" />
-      <workItem from="1772005512812" duration="19000" />
+      <workItem from="1771549221471" duration="6174000" />
+      <workItem from="1771742679255" duration="3624000" />
+      <workItem from="1772042154560" duration="986000" />
+      <workItem from="1772043191752" duration="33185000" />
     </task>
     <servers />
   </component>

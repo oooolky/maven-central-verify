@@ -42,8 +42,14 @@ public class CheckoutController {
   public record CartItem(Integer productId, Integer quantity) {}
 
   // Message sent to RabbitMQ (must include product details for the Warehouse to process)
-  public record WarehouseOrderMsg(Integer shoppingCartId, List<CartItem> items) {}
-
+  public record ShipMessage(
+      String orderId,
+      Integer shoppingCartId,
+      List<Item> items,
+      long createdAtEpochMs
+  ) {
+    public record Item(Integer productId, Integer quantity) {}
+  }
   @PostMapping("/shopping-carts/{shoppingCartId}/checkout")
   public ResponseEntity<?> checkout(
     @PathVariable Integer shoppingCartId,
@@ -69,22 +75,28 @@ public class CheckoutController {
         return ResponseEntity.status(HttpStatus.BAD_GATEWAY).body("CCA unavailable");
       }
 
-      // 2. Payment Success: Send full cart details to RabbitMQ
-      WarehouseOrderMsg orderMsg = new WarehouseOrderMsg(shoppingCartId, cartItems);
-      CorrelationData cd = new CorrelationData(UUID.randomUUID().toString());
+    // 2. Payment Success: Send full cart details to RabbitMQ
+    String orderId = UUID.randomUUID().toString();
+    ShipMessage msg = new ShipMessage(
+        orderId,
+        shoppingCartId,
+        cartItems.stream().map(i -> new ShipMessage.Item(i.productId(), i.quantity())).toList(),
+        System.currentTimeMillis()
+    );
 
-      rabbitTemplate.convertAndSend("", queueName, orderMsg, cd);
+    CorrelationData cd = new CorrelationData(orderId); // 或 UUID.randomUUID().toString()
 
-      // 3. Wait for RabbitMQ Publisher Confirm (Assignment Requirement)
-      try {
-        // Block and wait up to 5 seconds for ACK
-        CorrelationData.Confirm confirm = cd.getFuture().get(5, TimeUnit.SECONDS);
-        if (confirm == null || !confirm.isAck()) {
-          return ResponseEntity.status(HttpStatus.BAD_GATEWAY).body("RMQ publish not confirmed");
-        }
-      } catch (Exception e) {
-        return ResponseEntity.status(HttpStatus.BAD_GATEWAY).body("RMQ confirm timeout/failure");
+    rabbitTemplate.convertAndSend("", queueName, msg, cd);
+
+// 3. Wait for RabbitMQ Publisher Confirm (Assignment Requirement)
+    try {
+      CorrelationData.Confirm confirm = cd.getFuture().get(5, TimeUnit.SECONDS);
+      if (confirm == null || !confirm.isAck()) {
+        return ResponseEntity.status(HttpStatus.BAD_GATEWAY).body("RMQ publish not confirmed");
       }
+    } catch (Exception e) {
+      return ResponseEntity.status(HttpStatus.BAD_GATEWAY).body("RMQ confirm timeout/failure");
+    }
 
     // 4. All success: Generate order ID and return 200 OK
     return ResponseEntity.ok(new CheckoutResp(orderIdGenerator.getAndIncrement()));
