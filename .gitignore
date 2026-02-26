@@ -43,3 +43,10 @@ build/
 *.tfstate.*
 crash.log
 .terraform.lock.hcl
+
+# Terraform
+.terraform/
+terraform/.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
