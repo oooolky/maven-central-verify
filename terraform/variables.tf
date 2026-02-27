@@ -142,7 +142,7 @@ variable "rabbitmq_default_pass" {
 variable "rabbitmq_host" {
   description = "RabbitMQ host for ShoppingCart and Warehouse services"
   type        = string
-  default     = "REPLACE_WITH_RABBITMQ_PRIVATE_IP"
+  default     = "172.31.1.226"
 }
 
 variable "ship_queue" {
