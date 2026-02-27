@@ -44,5 +44,8 @@ public class WarehouseListener {
   public void onShutdown() {
     System.out.println("=== Warehouse shutting down ===");
     System.out.println("Total orders: " + totalOrders.sum());
+    qtyByProduct.forEach((productId, quantity) -> {
+      System.out.println("ProductID: " + productId + " | Total Quantity: " + quantity.sum());
+    });
   }
 }
