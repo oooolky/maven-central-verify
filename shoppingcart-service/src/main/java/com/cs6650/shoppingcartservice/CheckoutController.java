@@ -50,6 +50,14 @@ public class CheckoutController {
   ) {
     public record Item(Integer productId, Integer quantity) {}
   }
+
+  // Create new /health GET to align with other services
+  @GetMapping({"/health", "/shopping-cart/health", "/shopping-carts/health"})
+  public ResponseEntity<String> healthCheck() {
+    return ResponseEntity.ok("Shopping Cart Service is running");
+  }
+
+
   @PostMapping("/shopping-carts/{shoppingCartId}/checkout")
   public ResponseEntity<?> checkout(
     @PathVariable Integer shoppingCartId,
