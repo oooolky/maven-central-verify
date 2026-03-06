@@ -10,9 +10,12 @@ spring:
     listener:
       simple:
         acknowledge-mode: manual
+        prefetch: ${CONSUMER_PREFETCH:50}
 
 ship:
   queue: ${SHIP_QUEUE:ship-order}
 
 consumer:
   concurrency: ${CONSUMER_CONCURRENCY:8}
+  max-concurrency: ${CONSUMER_MAX_CONCURRENCY:32}
+  prefetch: ${CONSUMER_PREFETCH:50}

@@ -1,15 +1,15 @@
 server:
-  port: 8081
+  port: 8080
 
 cca:
-  base-url: http://localhost:8080
+  base-url: http://cs6650-assignment03-alb-76159262.us-west-2.elb.amazonaws.com
 
 ship:
   queue: ship-order
 
 spring:
   rabbitmq:
-    host: localhost
+    host: rabbitmq
     port: 5672
     username: admin
     password: admin123

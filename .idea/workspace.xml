@@ -6,12 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="bee69e24-a577-48a5-a711-a012df9677fa" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoppingcart-service/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingcart-service/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignment02/product-service/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment02/product-service/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bad-product-service/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bad-product-service/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cca-service/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/cca-service/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cca-service/cca-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/cca-service/cca-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cca-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cca-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/load-test-client/results_200k.csv" beforeDir="false" afterPath="$PROJECT_DIR$/load-test-client/results_200k.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoppingcart-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingcart-service/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shoppingcart-service/src/main/java/com/cs6650/shoppingcartservice/CheckoutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingcart-service/src/main/java/com/cs6650/shoppingcartservice/CheckoutController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoppingcart-service/src/main/java/com/cs6650/shoppingcartservice/RmqConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingcart-service/src/main/java/com/cs6650/shoppingcartservice/RmqConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoppingcart-service/src/main/java/com/cs6650/shoppingcartservice/ShoppingcartServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingcart-service/src/main/java/com/cs6650/shoppingcartservice/ShoppingcartServiceApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shoppingcart-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingcart-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/warehouse-consumer/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/warehouse-consumer/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/warehouse-consumer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/warehouse-consumer/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/warehouse-consumer/src/main/java/com/cs6650/warehouseconsumer/WarehouseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/warehouse-consumer/src/main/java/com/cs6650/warehouseconsumer/WarehouseListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/warehouse-consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/warehouse-consumer/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +52,8 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "git-widget-placeholder": "main",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "devops__infra",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/lukaiyuan/Desktop/new/Assignment3",
     "node.js.detected.package.eslint": "true",
@@ -56,6 +64,24 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/shoppingcart-service/src/main/java/com/cs6650/standby" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Assignment3" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Assignment3" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -76,6 +102,10 @@
       <workItem from="1771409707217" duration="29000" />
       <workItem from="1771410405569" duration="173000" />
       <workItem from="1771438619993" duration="17636000" />
+      <workItem from="1771549221471" duration="6174000" />
+      <workItem from="1771742679255" duration="3624000" />
+      <workItem from="1772042154560" duration="986000" />
+      <workItem from="1772043191752" duration="33185000" />
     </task>
     <servers />
   </component>

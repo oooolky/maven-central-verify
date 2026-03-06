@@ -26,15 +26,14 @@ public class WarehouseListener {
 
   // ✅ Debug version: receive String so it always works
   @RabbitListener(queues = "${ship.queue}", concurrency = "${consumer.concurrency:8}")
-  public void onMessage(
-      String body,
-      Channel channel,
-      @Header(AmqpHeaders.DELIVERY_TAG) long tag
-  ) throws IOException {
+  public void onMessage(ShipMessage msg, Channel channel,
+      @Header(AmqpHeaders.DELIVERY_TAG) long tag) throws IOException {
     try {
       totalOrders.increment();
-      System.out.println("Received: " + body);
-      // (optional) if later you send JSON, you can parse it and update qtyByProduct here
+      for (ShipMessage.Item item : msg.items()) {
+        qtyByProduct.computeIfAbsent(item.productId(), k -> new LongAdder())
+            .add(item.quantity());
+      }
       channel.basicAck(tag, false);
     } catch (Exception e) {
       channel.basicNack(tag, false, true);
@@ -45,5 +44,8 @@ public class WarehouseListener {
   public void onShutdown() {
     System.out.println("=== Warehouse shutting down ===");
     System.out.println("Total orders: " + totalOrders.sum());
+    qtyByProduct.forEach((productId, quantity) -> {
+      System.out.println("ProductID: " + productId + " | Total Quantity: " + quantity.sum());
+    });
   }
 }
